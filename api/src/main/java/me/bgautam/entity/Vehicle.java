@@ -1,14 +1,15 @@
 package me.bgautam.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by bishalgautam on 6/26/17.
  */
 
 @Entity
+@NamedQueries({
+
+})
 public class Vehicle {
 
     @Id
