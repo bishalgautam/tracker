@@ -16,7 +16,10 @@ public class Vehicle {
     @Column(columnDefinition = "CHAR(17)")
     private String vin;
 
+    @Column(columnDefinition =  "VARCHAR(32)")
     private String make;
+
+    @Column(columnDefinition =  "VARCHAR(32)")
     private String model;
     private int year;
     private int redlineRpm;
