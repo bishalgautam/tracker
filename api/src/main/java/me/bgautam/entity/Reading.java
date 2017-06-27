@@ -32,8 +32,15 @@ public class Reading{
     @OneToOne
     private Tyre tires;
 
+    private boolean alert;
+
+    @Column(columnDefinition = "VARCHAR(6)")
+    private String priority;
+
     public Reading(){
         this.id = UUID.randomUUID().toString();
+        this.alert = false;
+        this.priority = "NONE";
     }
 
     public String getVin() {
@@ -138,5 +145,22 @@ public class Reading{
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void setAlert(boolean alert) {
+        this.alert = alert;
+    }
+
+    public boolean isAlert() {
+
+        return alert;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 }
