@@ -1,5 +1,6 @@
 package me.bgautam.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.UUID;
@@ -12,6 +13,7 @@ import java.util.UUID;
 public class Tyre {
 
     @Id
+    @Column(columnDefinition = "VARCHAR(36)")
     private String id;
 
     private float frontLeft;

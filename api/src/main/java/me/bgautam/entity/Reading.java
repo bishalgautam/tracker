@@ -1,18 +1,18 @@
 package me.bgautam.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.UUID;
 
 /**
  * Created by bishalgautam on 6/26/17.
  *
  */
 @Entity
-public class Readings {
+public class Reading{
 
     @Id
+    private String id;
+
     @Column(columnDefinition = "CHAR(17)")
     private String vin;
     private double latitude;
@@ -29,8 +29,12 @@ public class Readings {
     private boolean cruiseControlOn;
     private int engineRpm;
 
-    @ManyToOne
+    @OneToOne
     private Tyre tires;
+
+    public Reading(){
+        this.id = UUID.randomUUID().toString();
+    }
 
     public String getVin() {
         return vin;
@@ -126,5 +130,13 @@ public class Readings {
 
     public void setTires(Tyre tires) {
         this.tires = tires;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
