@@ -1,18 +1,20 @@
 package me.bgautam.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
+import java.util.UUID;
 
 /**
  * Created by bishalgautam on 6/26/17.
  *
  */
 @Entity
-public class Readings {
+public class Reading{
 
     @Id
+    private String id;
+
     @Column(columnDefinition = "CHAR(17)")
     private String vin;
     private double latitude;
@@ -24,13 +26,28 @@ public class Readings {
     private double fuelVolume;
     private double speed;
     private double engineHp;
+    @Type(type = "numeric_boolean")
     private boolean checkEngineLightOn;
+    @Type(type = "numeric_boolean")
     private boolean engineCoolantLow;
+    @Type(type = "numeric_boolean")
     private boolean cruiseControlOn;
     private int engineRpm;
 
-    @ManyToOne
+    @OneToOne
     private Tyre tires;
+
+    @Type(type = "numeric_boolean")
+    private boolean alert;
+
+    @Column(columnDefinition = "VARCHAR(6)")
+    private String priority;
+
+    public Reading(){
+        this.id = UUID.randomUUID().toString();
+        this.alert = false;
+        this.priority = "NONE";
+    }
 
     public String getVin() {
         return vin;
@@ -126,5 +143,30 @@ public class Readings {
 
     public void setTires(Tyre tires) {
         this.tires = tires;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setAlert(boolean alert) {
+        this.alert = alert;
+    }
+
+    public boolean isAlert() {
+
+        return alert;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 }
