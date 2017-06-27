@@ -1,5 +1,7 @@
 package me.bgautam.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -24,14 +26,18 @@ public class Reading{
     private double fuelVolume;
     private double speed;
     private double engineHp;
+    @Type(type = "numeric_boolean")
     private boolean checkEngineLightOn;
+    @Type(type = "numeric_boolean")
     private boolean engineCoolantLow;
+    @Type(type = "numeric_boolean")
     private boolean cruiseControlOn;
     private int engineRpm;
 
     @OneToOne
     private Tyre tires;
 
+    @Type(type = "numeric_boolean")
     private boolean alert;
 
     @Column(columnDefinition = "VARCHAR(6)")
